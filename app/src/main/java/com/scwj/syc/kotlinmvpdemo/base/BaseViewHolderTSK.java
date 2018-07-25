@@ -12,6 +12,7 @@ public class BaseViewHolderTSK extends BaseViewHolder {
 
     public BaseViewHolderTSK(final View view){
         super(view);
-//        AutoUtils.autoSize(itemView);
+        AutoUtils.autoSize(itemView);
     }
+
 }

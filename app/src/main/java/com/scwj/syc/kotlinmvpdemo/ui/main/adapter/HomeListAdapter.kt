@@ -9,7 +9,7 @@ import com.scwj.syc.kotlinmvpdemo.model.bean.ThingsBean
  * Created by sunYuChen on 2018-07-17
  * 这里RecyclerView用的是Brvah框架，官方教程简书地址：https://www.jianshu.com/p/b343fcff51b0
  */
-class MainListAdapter(layoutResId:Int,data:List<ThingsBean>):BaseQuickAdapter<ThingsBean,BaseViewHolderTSK>(layoutResId,data){
+class HomeListAdapter(layoutResId:Int, data:List<ThingsBean>):BaseQuickAdapter<ThingsBean,BaseViewHolderTSK>(layoutResId,data){
 
     override fun convert(helper: BaseViewHolderTSK, item: ThingsBean) {
     }

@@ -3,4 +3,14 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!--首页底部背景颜色-->
+    <color name="whiteDDD">#dddddd</color>
+
+    <!--lightgray999-->
+    <color name="lightgray999">#999999</color>
+
+    <!--首页底部按钮颜色-->
+    <color name="tab_unselect">#484848</color>
+
 </resources>
