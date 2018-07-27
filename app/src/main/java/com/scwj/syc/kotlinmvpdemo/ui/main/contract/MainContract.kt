@@ -8,7 +8,7 @@ import com.scwj.syc.kotlinmvpdemo.base.BaseView
  */
 interface MainContract {
 
-    interface Veiw:BaseView
+    interface View:BaseView
 
-    interface Presenter:BasePresenter<Veiw>
+    interface Presenter:BasePresenter<View>
 }

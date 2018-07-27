@@ -15,7 +15,7 @@ import javax.inject.Inject
  */
 abstract class BaseFragment<T:BasePresenter<*>>: Fragment(),BaseView {
 
-    lateinit var mView:View
+    private lateinit var mView:View
 
     @Inject
     lateinit var mPresenter:T

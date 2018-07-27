@@ -9,7 +9,7 @@ import javax.inject.Inject
 class LifePresenter @Inject
 constructor():LifeContract.Presenter {
 
-    lateinit var mView:LifeContract.View
+    private lateinit var mView:LifeContract.View
 
     override fun attachView(view: LifeContract.View) {
         this.mView=view

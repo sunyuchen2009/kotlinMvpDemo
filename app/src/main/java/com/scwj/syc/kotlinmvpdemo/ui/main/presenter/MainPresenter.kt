@@ -9,9 +9,9 @@ import javax.inject.Inject
 class MainPresenter @Inject
 constructor():MainContract.Presenter{
 
-    lateinit var mMainView:MainContract.Veiw
+    private lateinit var mMainView:MainContract.View
 
-    override fun attachView(view: MainContract.Veiw) {
+    override fun attachView(view: MainContract.View) {
         this.mMainView=view
     }
 

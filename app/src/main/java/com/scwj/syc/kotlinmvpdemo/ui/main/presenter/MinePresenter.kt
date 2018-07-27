@@ -10,7 +10,7 @@ import javax.inject.Inject
 class MinePresenter @Inject
 constructor(): MineContract.Presenter {
 
-    lateinit var mView:MineContract.View
+    private lateinit var mView:MineContract.View
 
     override fun attachView(view: MineContract.View) {
         this.mView=view

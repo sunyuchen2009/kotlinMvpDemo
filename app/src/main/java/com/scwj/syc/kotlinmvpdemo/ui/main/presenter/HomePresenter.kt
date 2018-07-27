@@ -10,7 +10,7 @@ import javax.inject.Inject
 class HomePresenter @Inject
 constructor():HomeContract.Presenter {
 
-    lateinit var mHomeView:HomeContract.View
+    private lateinit var mHomeView:HomeContract.View
 
     override fun attachView(view: HomeContract.View) {
         this.mHomeView=view

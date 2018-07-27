@@ -51,7 +51,7 @@ abstract class BaseActivity<T:BasePresenter<*>>:AppCompatActivity(),BaseView {
     //在子类中重写这个方法以注入Activity中的对象
     abstract fun initInject()
 
-    //在子类中重写这个方法将通过attachView()方法连接presenter与veiw
+    //在子类中重写这个方法将通过attachView()方法连接presenter与view
     abstract fun initPresenter()
 
     protected abstract fun getLayout():Int

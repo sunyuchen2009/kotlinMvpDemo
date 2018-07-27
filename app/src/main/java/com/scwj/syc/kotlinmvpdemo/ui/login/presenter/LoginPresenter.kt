@@ -10,7 +10,7 @@ import javax.inject.Inject
 class LoginPresenter @Inject
 constructor():LoginContract.Presenter {
 
-    lateinit var mView:LoginContract.View
+    private lateinit var mView:LoginContract.View
     override fun attachView(view: LoginContract.View) {
         this.mView=view
     }
