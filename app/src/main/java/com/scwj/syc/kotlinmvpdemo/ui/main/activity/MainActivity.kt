@@ -14,12 +14,10 @@ import com.scwj.syc.kotlinmvpdemo.ui.main.fragment.MineFragment
 import com.scwj.syc.kotlinmvpdemo.ui.main.presenter.MainPresenter
 import com.scwj.syc.kotlinmvpdemo.widget.bottombar.BottomBar
 import com.scwj.syc.kotlinmvpdemo.widget.bottombar.BottomBarTab
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_life.*
-import kotlinx.android.synthetic.main.fragment_mine.*
 
-class MainActivity : BaseActivity<MainPresenter>(),MainContract.Veiw {
+class MainActivity : BaseActivity<MainPresenter>(),MainContract.View {
 
     private val mFragments = arrayOfNulls<Fragment?>(3)
 
@@ -50,16 +48,10 @@ class MainActivity : BaseActivity<MainPresenter>(),MainContract.Veiw {
             }
         })
 
-//        addGifPic()
-    }
-
-    fun addGifPic(){
-        Glide.with(this)
-                .load("https://gss0.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/060828381f30e924d12005cd4a086e061c95f742.gif")
-                .centerCrop()
-                .into(life_iv_gif)
 
     }
+
+
 
     override fun initInject() {
         activityComponent.inject(this)

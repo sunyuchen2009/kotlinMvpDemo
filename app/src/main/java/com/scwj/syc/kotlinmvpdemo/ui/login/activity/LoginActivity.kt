@@ -22,7 +22,6 @@ class LoginActivity:BaseActivity<LoginPresenter>(),LoginContract.View{
         showMsg("testSuccess")
         Glide.with(this)
                 .load("https://www.easyicon.net/api/resizeApi.php?id=1082114&size=128")
-                .centerCrop()
                 .into(iv_hello)
     }
 

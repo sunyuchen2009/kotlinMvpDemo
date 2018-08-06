@@ -31,10 +31,9 @@ class MineFragment:BaseFragment<MinePresenter>(),MineContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Glide.with(this)
-                .load("https://www.easyicon.net/api/resizeApi.php?id=1082114&size=128")
-                .centerCrop()
-                .into(mine_iv_gif)
+//        Glide.with(this)
+//                .load("https://www.easyicon.net/api/resizeApi.php?id=1082114&size=128")
+//                .into(mine_iv_gif)
     }
 
     companion object {
