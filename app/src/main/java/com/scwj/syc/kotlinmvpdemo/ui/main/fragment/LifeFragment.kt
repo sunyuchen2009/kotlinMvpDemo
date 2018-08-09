@@ -1,5 +1,6 @@
 package com.scwj.syc.kotlinmvpdemo.ui.main.fragment
 
+import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.view.View
 import android.view.animation.*
@@ -38,6 +39,9 @@ constructor():BaseFragment<LifePresenter>(),LifeContract.View{
 //        startRotateAnim()
 //        startAlphaAnim()
         startCombineAnim()
+        life_iv_pappy.setImageResource(R.drawable.pappy_dancing)
+        var animationDrawable:AnimationDrawable = life_iv_pappy.drawable as AnimationDrawable
+        animationDrawable.start()
     }
 
     //为circleView设置添加平移动画
