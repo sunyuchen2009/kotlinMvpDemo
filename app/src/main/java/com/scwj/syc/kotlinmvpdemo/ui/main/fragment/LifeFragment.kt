@@ -1,8 +1,13 @@
 package com.scwj.syc.kotlinmvpdemo.ui.main.fragment
 
+import android.animation.Animator
+import android.animation.ValueAnimator
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.animation.*
 import com.bumptech.glide.Glide
 import com.scwj.syc.kotlinmvpdemo.R
@@ -12,12 +17,21 @@ import com.scwj.syc.kotlinmvpdemo.ui.main.presenter.LifePresenter
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.fragment_life.*
 import javax.inject.Inject
+import android.opengl.ETC1.getHeight
+import android.view.ViewTreeObserver.OnGlobalLayoutListener
+import android.opengl.ETC1.getHeight
+
+
+
+
 
 /**
  * Created by sunYuChen on 2018-07-24
  */
 class LifeFragment @Inject
 constructor():BaseFragment<LifePresenter>(),LifeContract.View{
+
+
     override fun initPresenter() {
         mPresenter.attachView(this)
     }
@@ -31,6 +45,12 @@ constructor():BaseFragment<LifePresenter>(),LifeContract.View{
     override fun showMsg(msg: String) {
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -38,10 +58,15 @@ constructor():BaseFragment<LifePresenter>(),LifeContract.View{
 //        startScaleAnim()
 //        startRotateAnim()
 //        startAlphaAnim()
-        startCombineAnim()
+//        startCombineAnim()
+
+        addIntAnimator()
         life_iv_pappy.setImageResource(R.drawable.pappy_dancing)
         var animationDrawable:AnimationDrawable = life_iv_pappy.drawable as AnimationDrawable
         animationDrawable.start()
+
+
+
     }
 
     //为circleView设置添加平移动画
@@ -154,6 +179,40 @@ constructor():BaseFragment<LifePresenter>(),LifeContract.View{
 
     }
 
+    //属性动画，ValueAnimator.ofInt()内置整型估值器
+    private fun addIntAnimator() {
+
+        //设置初始值：circleView的宽度、结束值：500
+        var valueAnimator:ValueAnimator=ValueAnimator.ofFloat(480f,500f)
+
+        //设置播放时长
+        valueAnimator.duration = 2000
+
+        //将属性数值手动赋值给对象的属性，设置更新监视器，即每次数值变化都会调用该方法
+        valueAnimator.addUpdateListener (object :ValueAnimator.AnimatorUpdateListener{
+            override fun onAnimationUpdate(animator: ValueAnimator?) {
+
+                //获取每次变化后的属性值并打印（缓慢变化）
+                var currentValue:Float = animator?.animatedValue as Float
+                Log.e(TAG,currentValue.toString())
+
+                //这里如果切换fragment会导致控件id（life_circle）为空崩溃，所以要加判断
+                if (life_circle!=null){
+
+                    //每次值变化时，将值手动赋值给对象的属性，即将每次变化后的值赋给按钮的宽度
+                    life_circle.layoutParams.width = currentValue.toInt()
+
+                    //刷新视图，即重新绘制，实现动画效果
+                    life_circle.requestLayout()
+                }
+
+            }
+        })
+
+        //启动动画
+        valueAnimator.start()
+    }
+    
 
     companion object {
 

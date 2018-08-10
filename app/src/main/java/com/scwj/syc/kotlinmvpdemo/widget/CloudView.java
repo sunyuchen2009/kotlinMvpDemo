@@ -12,7 +12,9 @@ import android.graphics.Path;
 import android.graphics.PointF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
 
 import com.scwj.syc.kotlinmvpdemo.R;
 
@@ -21,9 +23,11 @@ import com.scwj.syc.kotlinmvpdemo.R;
  */
 public class CloudView extends View {
 
-    private PointF points[] = new PointF[3];
-    private PointF controls[] = new PointF[4];
-    Paint mPaint;
+    private int mWidth;
+    private int mHeight;
+    private int mLeft;
+
+    private Paint mPaint;
 
     public CloudView(Context context) {
         super(context);
@@ -50,17 +54,14 @@ public class CloudView extends View {
         mPaint.setStyle(Paint.Style.FILL);
         mPaint.setTextSize(60);
         mPaint.setPathEffect(new CornerPathEffect(4));
-
-
     }
 
-    @SuppressLint("WrongConstant")
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        int mWidth=getWidth();
-        int mHeight=getHeight();
+        mWidth=getWidth();
+        mHeight=getHeight();
         float mScaleW = mWidth/120;
         float mScaleH = mHeight/60;
 
@@ -71,11 +72,13 @@ public class CloudView extends View {
         path.lineTo(5.82f * mScaleW, 51.78f * mScaleH);
         canvas.drawPath(path, mPaint);
 
-        ObjectAnimator translationAnimation = ObjectAnimator.ofFloat(this, "x", mWidth, -mWidth);
-        translationAnimation.setDuration(5000);
-        translationAnimation.setStartDelay(1000);
-        translationAnimation.setRepeatCount(ValueAnimator.INFINITE);
-        translationAnimation.setRepeatMode(ValueAnimator.INFINITE);
-
     }
+
+    @Override
+    public void layout(int l, int t, int r, int b) {
+        super.layout(l, t, r, b);
+        mLeft=r;
+        Log.e("top",String.valueOf(t));
+    }
+
 }
